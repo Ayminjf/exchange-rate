@@ -17,3 +17,17 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+
+  assets:
+    - assets/images/
+
+  fonts:
+    - family: iranSans
+      fonts:
+        - asset: assets/fonts/IRANSans.ttf
+        
+    - family: lalezar
+      fonts:
+        - asset: assets/fonts/Lalezar-Regular.ttf
+
+

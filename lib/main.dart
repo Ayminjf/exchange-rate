@@ -1,4 +1,7 @@
+import 'package:exchange_rate/screens/root_screens.dart';
 import 'package:flutter/material.dart';
+import 'package:exchange_rate/constants/constants.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +12,27 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
-      ),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      localizationsDelegates: const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('fa'), // Persian
+      ],
+      theme: ThemeData(
+          scaffoldBackgroundColor: Constants.whiteColor,
+          appBarTheme: AppBarTheme(backgroundColor: Constants.blackColor),
+          textTheme: TextTheme(
+            titleSmall: TextStyle(
+              color: Constants.whiteColor,
+              fontFamily: "lalezar",
+              fontSize: 20,
+            ),
+          )),
+      home: const RootScreen(),
     );
   }
 }

@@ -10,6 +10,12 @@ class CoinScreen extends StatefulWidget {
 class _CoinScreenState extends State<CoinScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return const Scaffold(
+      body: Center(
+          child: Text(
+        "Coin",
+        style: TextStyle(color: Colors.black, fontSize: 25),
+      )),
+    );
   }
 }

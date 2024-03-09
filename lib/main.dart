@@ -23,15 +23,21 @@ class MainApp extends StatelessWidget {
         Locale('fa'), // Persian
       ],
       theme: ThemeData(
-          scaffoldBackgroundColor: Constants.whiteColor,
-          appBarTheme: AppBarTheme(backgroundColor: Constants.blackColor),
-          textTheme: TextTheme(
-            titleSmall: TextStyle(
-              color: Constants.whiteColor,
-              fontFamily: "lalezar",
-              fontSize: 20,
-            ),
-          )),
+        scaffoldBackgroundColor: Constants.whiteColor,
+        appBarTheme: AppBarTheme(backgroundColor: Constants.blackColor),
+        textTheme: TextTheme(
+          titleSmall: TextStyle(
+            color: Constants.whiteColor,
+            fontFamily: "lalezar",
+            fontSize: 20,
+          ),
+          titleMedium: TextStyle(
+            color: Constants.whiteColor,
+            fontFamily: "lalezar",
+            fontSize: 10,
+          ),
+        ),
+      ),
       home: const RootScreen(),
     );
   }

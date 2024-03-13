@@ -43,6 +43,27 @@ class MainApp extends StatelessWidget {
             fontFamily: "lalezar",
             fontSize: 10,
           ),
+          bodyMedium: TextStyle(
+            color: Constants.blackColor,
+            fontFamily: "iranSans",
+            fontWeight: FontWeight.w500,
+            fontSize: 15,
+          ),
+          bodySmall: TextStyle(
+            color: Constants.blackColor,
+            fontFamily: "iranSans",
+            fontSize: 22,
+          ),
+          bodyLarge: TextStyle(
+            color: Constants.blackColor,
+            fontFamily: "iranSans",
+            fontSize: 16,
+          ),
+          titleLarge: TextStyle(
+            color: Constants.blackColor,
+            fontFamily: "lalezar",
+            fontSize: 20,
+          ),
         ),
       ),
       home: const RootScreen(),

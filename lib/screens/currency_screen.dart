@@ -69,6 +69,45 @@ class CurrencyItems extends StatelessWidget {
       ],
     );
   }
+
+  Widget _buildCurrencyDetails(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Row(
+          children: [
+            Text(
+              "60000".persianNumber,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+          ],
+        ),
+        const SizedBox(
+          height: 3,
+        ),
+        Container(
+          width: 50,
+          height: 25,
+          decoration: BoxDecoration(
+            color: const Color(0xFF62E226),
+            border: Border.all(
+              color: Constants.blackColor,
+              width: 2,
+              strokeAlign: BorderSide.strokeAlignCenter,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+          child: Center(
+            child: Text(
+              "2.4".persianNumber,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

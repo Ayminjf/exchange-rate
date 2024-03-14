@@ -12,12 +12,25 @@ class CurrencyScreen extends StatefulWidget {
 class _CurrencyScreenState extends State<CurrencyScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-          child: Text(
-        "Currency",
-        style: TextStyle(color: Colors.black, fontSize: 25),
-      )),
+    Size size = MediaQuery.of(context).size;
+    return Localizations.override(
+      context: context,
+      locale: const Locale('fa'),
+      child: Scaffold(
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: SizedBox(
+              height: size.height * 0.75,
+              child: const CurrencyItems(),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class CurrencyItems extends StatelessWidget {
   const CurrencyItems({
     super.key,
@@ -31,6 +44,20 @@ class CurrencyItems extends StatelessWidget {
         return _buildCurrencyItem(context, index);
       },
       itemCount: Constants.flagCurrency.length,
+    );
+  }
+
+  Widget _buildCurrencyItem(BuildContext context, int index) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          _buildCurrencyInfo(context, index),
+          _buildCurrencyDetails(context),
+        ],
+      ),
     );
   }
 

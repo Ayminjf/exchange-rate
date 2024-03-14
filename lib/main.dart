@@ -64,6 +64,11 @@ class MainApp extends StatelessWidget {
             fontFamily: "lalezar",
             fontSize: 20,
           ),
+          displayLarge: const TextStyle(
+            color: Colors.blue,
+            fontFamily: "lalezar",
+            fontSize: 20,
+          ),
         ),
       ),
       home: const RootScreen(),

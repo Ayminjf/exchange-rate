@@ -31,6 +31,78 @@ class Constants {
     CustomTabBar(image: "golds"),
     CustomTabBar(image: "cryptos"),
   ];
+
+  static List<String> flagCurrency = [
+    "usd",
+    "eur",
+    "gbp",
+    "jpy",
+    "aud",
+    "cad",
+    "chf",
+    "nzd",
+    "cny",
+    "myr",
+    "nok",
+    "try",
+    "pkr",
+    "sgd",
+    "afn",
+    "tjs",
+    "inr",
+    "rub",
+    "brl",
+    "azn",
+    "sek",
+    "dkk",
+    "kwd",
+    "aed",
+    "omr",
+    "thb",
+    "gel",
+  ];
+
+  static List<String> nameCurrency = [
+    "دلار آمریکا",
+    "یورو",
+    "پوند استرلینگ",
+    "ین ژاپن",
+    "دلار استرالیا",
+    "دلار کانادا",
+    "فرانک سوئیس",
+    "دلار نیوزیلند",
+    "یوان چین",
+    "رینگیت مالزی",
+    "کرون نروژ",
+    "لیره ترکیه",
+    "روپیه پاکستان",
+    "دلار سنگاپور",
+    "افغانی",
+    "سامانی",
+    "روپیه هند",
+    "روبل روسیه",
+    "رئال برزیل",
+    "منات آذربایجان",
+    "کرون سوئد",
+    "کرون دانمارک",
+    "دینار کویت",
+    "درهم امارات",
+    "ریال عمان",
+    "بات تایلند",
+    "لاری گرجستان",
+  ];
+}
+
+extension PersianNumberExtension on String {
+  String get persianNumber {
+    const english = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+    const persian = ["۰", "۱", "۲", "۳", "۴", "۵", "۶", "۷", "۸", "۹"];
+    String text = this;
+    for (var i = 0; i < english.length; i++) {
+      text = text.replaceAll(english[i], persian[i]);
+    }
+    return text;
+  }
 }
 
 class CustomTabBar extends StatelessWidget {
@@ -49,3 +121,30 @@ class CustomTabBar extends StatelessWidget {
     );
   }
 }
+// دلار آمریکا
+// یورو
+// پوند استرلینگ
+// ین ژاپن
+// دلار استرالیا
+// دلار کانادا
+// فرانک سوئیس
+// دلار نیوزیلند
+// یوان چین
+// رینگیت مالزی
+// کرون نروژ
+// لیره ترکیه
+// روپیه پاکستان
+// دلار سنگاپور
+// افغانی
+// سامانی
+// روپیه هند
+// روبل روسیه
+// رئال برزیل
+// منات آذربایجان
+// کرون سوئد
+// کرون دانمارک
+// دینار کویت
+// درهم امارات
+// ریال عمان
+// بات تایلند
+// لاری گرجستان

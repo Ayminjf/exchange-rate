@@ -59,7 +59,6 @@ class _RootScreenState extends State<RootScreen> {
         popAllScreensOnTapOfSelectedTab: true,
         popActionScreens: PopActionScreensType.all,
         itemAnimationProperties: const ItemAnimationProperties(
-          // Navigation Bar's items animation properties.
           duration: Duration(milliseconds: 100),
           curve: Curves.ease,
         ),
@@ -69,6 +68,10 @@ class _RootScreenState extends State<RootScreen> {
           duration: Duration(milliseconds: 100),
         ),
         navBarStyle: NavBarStyle.style6,
+        decoration: const NavBarDecoration(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(15)),
+          colorBehindNavBar: Colors.white,
+        ),
       ),
     );
   }

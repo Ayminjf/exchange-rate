@@ -71,7 +71,7 @@ class CoinItems extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          "40000".persianNumber,
+          Constants.priceFormat("40000".persianNumber),
           style: Theme.of(context).textTheme.bodySmall,
         ),
       ],

@@ -73,13 +73,9 @@ class CurrencyItems extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Row(
-          children: [
-            Text(
-              "60000".persianNumber,
-              style: Theme.of(context).textTheme.bodySmall,
-            ),
-          ],
+        Text(
+          Constants.priceFormat("670000".persianNumber),
+          style: Theme.of(context).textTheme.bodySmall,
         ),
         const SizedBox(
           height: 3,

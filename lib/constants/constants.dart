@@ -91,6 +91,14 @@ class Constants {
     "بات تایلند",
     "لاری گرجستان",
   ];
+
+  static List<String> nameCoin = [
+    "سکه امامی",
+    "سکه بهار آزادی",
+    "نیم سکه",
+    "ربع سکه",
+    "سکه گرمی",
+  ];
 }
 
 extension PersianNumberExtension on String {

@@ -1,4 +1,4 @@
-import 'package:exchange_rate/widget/currency_items.dart';
+import 'package:exchange_rate/widgets/currency_items.dart';
 import 'package:flutter/material.dart';
 
 class CurrencyScreen extends StatefulWidget {

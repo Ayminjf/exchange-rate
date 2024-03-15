@@ -1,5 +1,6 @@
 import 'package:exchange_rate/constants/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class CoinItems extends StatelessWidget {
   const CoinItems({
@@ -42,9 +43,12 @@ class CoinItems extends StatelessWidget {
             shape: BoxShape.circle,
           ),
           child: SizedBox(
-              height: 55,
-              width: 55,
-              child: Image.asset("assets/images/coin.png")),
+            height: 55,
+            width: 55,
+            child: SvgPicture.asset(
+              "assets/images/coin.svg",
+            ),
+          ),
         ),
         const SizedBox(width: 10),
         Column(

@@ -74,6 +74,30 @@ class CoinItems extends StatelessWidget {
           Constants.priceFormat("40000".persianNumber),
           style: Theme.of(context).textTheme.bodySmall,
         ),
+        const SizedBox(
+          height: 3,
+        ),
+        Container(
+          width: 50,
+          height: 25,
+          decoration: BoxDecoration(
+            color: Constants.highChangeColor,
+            border: Border.all(
+              color: Constants.blackColor,
+              width: 2,
+              strokeAlign: BorderSide.strokeAlignCenter,
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(8),
+            ),
+          ),
+          child: Center(
+            child: Text(
+              "2.4".persianNumber,
+              style: Theme.of(context).textTheme.bodyLarge,
+            ),
+          ),
+        ),
       ],
     );
   }

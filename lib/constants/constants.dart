@@ -8,6 +8,8 @@ import 'package:exchange_rate/screens/currency_screen.dart';
 class Constants {
   static Color blackColor = const Color(0xFF282828);
   static Color whiteColor = const Color(0xFFF0F0F0);
+  static Color highChangeColor = const Color(0xFFA1FD64);
+  static Color lowChangeColor = Color(0xFFFD8F64);
 
   static List<Widget> screens = const [
     CurrencyScreen(),

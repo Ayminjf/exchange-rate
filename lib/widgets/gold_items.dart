@@ -2,8 +2,8 @@ import 'package:exchange_rate/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CoinItems extends StatelessWidget {
-  const CoinItems({
+class GoldItems extends StatelessWidget {
+  const GoldItems({
     super.key,
   });
 
@@ -14,7 +14,7 @@ class CoinItems extends StatelessWidget {
       itemBuilder: (context, index) {
         return _buildCurrencyItem(context, index);
       },
-      itemCount: Constants.nameCoin.length,
+      itemCount: Constants.nameGold.length,
     );
   }
 
@@ -39,14 +39,14 @@ class CoinItems extends StatelessWidget {
           padding: const EdgeInsets.all(5),
           decoration: const BoxDecoration(
             color: Color(0xFFDDDDDD),
-            // borderRadius: BorderRadius.all(Radius.circular(15)),
-            shape: BoxShape.circle,
+            borderRadius: BorderRadius.all(Radius.circular(25)),
+            // shape: BoxShape.circle,
           ),
           child: SizedBox(
             height: 55,
             width: 55,
             child: SvgPicture.asset(
-              "assets/images/coin.svg",
+              "assets/images/gold.svg",
             ),
           ),
         ),
@@ -56,7 +56,7 @@ class CoinItems extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              Constants.nameCoin[index],
+              Constants.nameGold[index],
               style: Theme.of(context).textTheme.titleLarge,
             ),
           ],
@@ -76,27 +76,6 @@ class CoinItems extends StatelessWidget {
         ),
         const SizedBox(
           height: 3,
-        ),
-        Container(
-          width: 50,
-          height: 25,
-          decoration: BoxDecoration(
-            color: Constants.highChangeColor,
-            border: Border.all(
-              color: Constants.blackColor,
-              width: 2,
-              strokeAlign: BorderSide.strokeAlignCenter,
-            ),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(8),
-            ),
-          ),
-          child: Center(
-            child: Text(
-              "2.4".persianNumber,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ),
         ),
       ],
     );

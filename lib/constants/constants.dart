@@ -8,6 +8,8 @@ import 'package:exchange_rate/screens/currency_screen.dart';
 class Constants {
   static Color blackColor = const Color(0xFF282828);
   static Color whiteColor = const Color(0xFFF0F0F0);
+  static Color highChangeColor = const Color(0xFFA1FD64);
+  static Color lowChangeColor = const Color(0xFFFD8F64);
 
   static List<Widget> screens = const [
     CurrencyScreen(),
@@ -99,6 +101,30 @@ class Constants {
     "ربع سکه",
     "سکه گرمی",
   ];
+
+  static List<String> nameGold = [
+    "گرم طلا 18",
+    "گرم طلا 24",
+    "مثقال طلا",
+  ];
+
+  static String rialaToToman(String price) =>
+      price.substring(0, price.length - 1);
+
+  static String priceFormat(String input) {
+    input = rialaToToman(input);
+    String reversed = input.split('').reversed.join('');
+
+    String result = '';
+    for (int i = 0; i < reversed.length; i++) {
+      result += reversed[i];
+      if ((i + 1) % 3 == 0 && i != reversed.length - 1) {
+        result += ',';
+      }
+    }
+
+    return result.split('').reversed.join('');
+  }
 }
 
 extension PersianNumberExtension on String {
@@ -129,30 +155,3 @@ class CustomTabBar extends StatelessWidget {
     );
   }
 }
-// دلار آمریکا
-// یورو
-// پوند استرلینگ
-// ین ژاپن
-// دلار استرالیا
-// دلار کانادا
-// فرانک سوئیس
-// دلار نیوزیلند
-// یوان چین
-// رینگیت مالزی
-// کرون نروژ
-// لیره ترکیه
-// روپیه پاکستان
-// دلار سنگاپور
-// افغانی
-// سامانی
-// روپیه هند
-// روبل روسیه
-// رئال برزیل
-// منات آذربایجان
-// کرون سوئد
-// کرون دانمارک
-// دینار کویت
-// درهم امارات
-// ریال عمان
-// بات تایلند
-// لاری گرجستان

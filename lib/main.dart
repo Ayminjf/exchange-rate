@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:exchange_rate/constants/constants.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter/services.dart';
 
 void main() {
-  runApp(MainApp());
+  runApp(const MainApp());
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setEnabledSystemUIMode(
     SystemUiMode.manual,

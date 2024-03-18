@@ -8,6 +8,8 @@ import 'package:exchange_rate/screens/currency_screen.dart';
 class Constants {
   static Color blackColor = const Color(0xFF282828);
   static Color whiteColor = const Color(0xFFF0F0F0);
+  static Color highChangeColor = const Color(0xFFA1FD64);
+  static Color lowChangeColor = const Color(0xFFFD8F64);
 
   static List<Widget> screens = const [
     CurrencyScreen(),
@@ -98,6 +100,12 @@ class Constants {
     "نیم سکه",
     "ربع سکه",
     "سکه گرمی",
+  ];
+
+  static List<String> nameGold = [
+    "گرم طلا 18",
+    "گرم طلا 24",
+    "مثقال طلا",
   ];
 
   static String rialaToToman(String price) =>

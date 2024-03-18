@@ -84,7 +84,7 @@ class CurrencyItems extends StatelessWidget {
           width: 50,
           height: 25,
           decoration: BoxDecoration(
-            color: const Color(0xFF62E226),
+            color: Constants.highChangeColor,
             border: Border.all(
               color: Constants.blackColor,
               width: 2,

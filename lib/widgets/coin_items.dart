@@ -46,7 +46,7 @@ class CoinItems extends StatelessWidget {
             height: 55,
             width: 55,
             child: SvgPicture.asset(
-              "assets/images/coin.svg",
+              "assets/images/coin_screen/coin.svg",
             ),
           ),
         ),

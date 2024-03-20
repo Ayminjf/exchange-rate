@@ -2,8 +2,8 @@ import 'package:exchange_rate/constants/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-class CoinItems extends StatelessWidget {
-  const CoinItems({
+class CryptoItems extends StatelessWidget {
+  const CryptoItems({
     super.key,
   });
 
@@ -14,7 +14,7 @@ class CoinItems extends StatelessWidget {
       itemBuilder: (context, index) {
         return _buildCurrencyItem(context, index);
       },
-      itemCount: Constants.nameCoin.length,
+      itemCount: Constants.cryptoSymbol.length,
     );
   }
 
@@ -35,19 +35,11 @@ class CoinItems extends StatelessWidget {
   Widget _buildCurrencyInfo(BuildContext context, int index) {
     return Row(
       children: [
-        Container(
-          padding: const EdgeInsets.all(5),
-          decoration: const BoxDecoration(
-            color: Color(0xFFDDDDDD),
-            // borderRadius: BorderRadius.all(Radius.circular(15)),
-            shape: BoxShape.circle,
-          ),
-          child: SizedBox(
-            height: 55,
-            width: 55,
-            child: SvgPicture.asset(
-              "assets/images/coin_screen/coin.svg",
-            ),
+        SizedBox(
+          height: 55,
+          width: 55,
+          child: SvgPicture.asset(
+            "assets/images/crypto_screen/${Constants.cryptoSymbol[index]}.svg",
           ),
         ),
         const SizedBox(width: 10),
@@ -56,8 +48,12 @@ class CoinItems extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              Constants.nameCoin[index],
+              Constants.cryptoSymbol[index],
               style: Theme.of(context).textTheme.titleLarge,
+            ),
+            Text(
+              Constants.cryptoSymbol[index].toUpperCase(),
+              style: Theme.of(context).textTheme.displayLarge,
             ),
           ],
         ),
@@ -71,11 +67,11 @@ class CoinItems extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Text(
-          Constants.priceFormat("40000".persianNumber),
+          Constants.priceFormat("670000".persianNumber),
           style: Theme.of(context).textTheme.bodySmall,
         ),
         const SizedBox(
-          height: 3,
+          height: 5,
         ),
         Container(
           width: 50,

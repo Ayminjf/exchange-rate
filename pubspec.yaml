@@ -25,6 +25,10 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/currency_screen/
+    - assets/images/coin_screen/
+    - assets/images/gold_screen/
+    - assets/images/crypto_screen/
 
   fonts:
     - family: iranSans

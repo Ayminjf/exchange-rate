@@ -45,7 +45,7 @@ class CurrencyItems extends StatelessWidget {
             height: 55,
             width: 55,
             child: SvgPicture.asset(
-              "assets/images/${Constants.flagCurrency[index]}.svg",
+              "assets/images/currency_screen/${Constants.flagCurrency[index]}.svg",
             ),
           ),
         ),

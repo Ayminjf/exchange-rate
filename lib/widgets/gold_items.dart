@@ -46,7 +46,7 @@ class GoldItems extends StatelessWidget {
             height: 55,
             width: 55,
             child: SvgPicture.asset(
-              "assets/images/gold.svg",
+              "assets/images/gold_screen/gold.svg",
             ),
           ),
         ),

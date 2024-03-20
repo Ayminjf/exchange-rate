@@ -108,6 +108,41 @@ class Constants {
     "مثقال طلا",
   ];
 
+  static List<String> cryptoSymbol = [
+    "btc",
+    "eth",
+    "usdt",
+    "bnb",
+    "sol",
+    "xrp",
+    "usdc",
+    "ada",
+    "avax",
+    "doge",
+    "shib",
+    "ton",
+    "dot",
+    "trx",
+    "wbtc",
+    "link",
+    "bch",
+    "near",
+    "uni",
+    "ltc",
+    "leo",
+    "apt",
+    "atom",
+    "tao",
+    "rndr",
+    "etc",
+    "stx",
+    "fil",
+    "imx",
+    "grt",
+    "xlm",
+    "okb",
+  ];
+
   static String rialaToToman(String price) =>
       price.substring(0, price.length - 1);
 

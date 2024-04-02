@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class PriceListModel {
   Map<String, Current> current;
   List<Last> toleranceLow;
@@ -23,6 +25,31 @@ class PriceListModel {
         toleranceHigh: toleranceHigh ?? this.toleranceHigh,
         last: last ?? this.last,
       );
+
+  factory PriceListModel.fromRawJson(String str) =>
+      PriceListModel.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory PriceListModel.fromJson(Map<String, dynamic> json) => PriceListModel(
+        current: Map.from(json["current"])
+            .map((k, v) => MapEntry<String, Current>(k, Current.fromJson(v))),
+        toleranceLow:
+            List<Last>.from(json["tolerance_low"].map((x) => Last.fromJson(x))),
+        toleranceHigh: List<Last>.from(
+            json["tolerance_high"].map((x) => Last.fromJson(x))),
+        last: List<Last>.from(json["last"].map((x) => Last.fromJson(x))),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "current": Map.from(current)
+            .map((k, v) => MapEntry<String, dynamic>(k, v.toJson())),
+        "tolerance_low":
+            List<dynamic>.from(toleranceLow.map((x) => x.toJson())),
+        "tolerance_high":
+            List<dynamic>.from(toleranceHigh.map((x) => x.toJson())),
+        "last": List<dynamic>.from(last.map((x) => x.toJson())),
+      };
 }
 
 class Current {
@@ -74,9 +101,41 @@ class Current {
         tG: tG ?? this.tG,
         ts: ts ?? this.ts,
       );
+
+  factory Current.fromRawJson(String str) => Current.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory Current.fromJson(Map<String, dynamic> json) => Current(
+        p: json["p"],
+        h: json["h"],
+        l: json["l"],
+        d: json["d"],
+        dp: json["dp"]?.toDouble(),
+        dt: dtValues.map[json["dt"]]!,
+        t: json["t"],
+        tEn: json["t_en"],
+        tG: json["t-g"],
+        ts: DateTime.parse(json["ts"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "p": p,
+        "h": h,
+        "l": l,
+        "d": d,
+        "dp": dp,
+        "dt": dtValues.reverse[dt],
+        "t": t,
+        "t_en": tEn,
+        "t-g": tG,
+        "ts": ts.toIso8601String(),
+      };
 }
 
 enum Dt { EMPTY, HIGH, LOW }
+
+final dtValues = EnumValues({"": Dt.EMPTY, "high": Dt.HIGH, "low": Dt.LOW});
 
 class Last {
   String name;
@@ -151,4 +210,58 @@ class Last {
         titleEn: titleEn ?? this.titleEn,
         phpFirstPrice: phpFirstPrice ?? this.phpFirstPrice,
       );
+
+  factory Last.fromRawJson(String str) => Last.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory Last.fromJson(Map<String, dynamic> json) => Last(
+        name: json["name"],
+        itemId: json["item_id"],
+        slug: json["slug"],
+        p: json["p"],
+        h: json["h"],
+        l: json["l"],
+        o: json["o"],
+        d: json["d"],
+        dp: json["dp"]?.toDouble(),
+        dt: dtValues.map[json["dt"]]!,
+        t: json["t"],
+        tEn: json["t_en"],
+        createdAt: json["created_at"],
+        title: json["title"],
+        titleEn: json["title_en"],
+        phpFirstPrice: json["php:first-price"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "item_id": itemId,
+        "slug": slug,
+        "p": p,
+        "h": h,
+        "l": l,
+        "o": o,
+        "d": d,
+        "dp": dp,
+        "dt": dtValues.reverse[dt],
+        "t": t,
+        "t_en": tEn,
+        "created_at": createdAt,
+        "title": title,
+        "title_en": titleEn,
+        "php:first-price": phpFirstPrice,
+      };
+}
+
+class EnumValues<T> {
+  Map<String, T> map;
+  late Map<T, String> reverseMap;
+
+  EnumValues(this.map);
+
+  Map<T, String> get reverse {
+    reverseMap = map.map((k, v) => MapEntry(v, k));
+    return reverseMap;
+  }
 }

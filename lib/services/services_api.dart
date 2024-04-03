@@ -26,3 +26,22 @@ class ServicesApi {
       throw Exception("An error occurred: $e");
     }
   }
+
+  Future<List<Datum>> fetchCryptoCurrencyData() async {
+    try {
+      final response = await http.get(
+        Uri.parse("https://www.megaweb.ir/api/digital-money"),
+      );
+
+      if (response.statusCode == 200) {
+        final List<Datum> cryptoList =
+            CryptoCurrencyModel.fromJson(json.decode(response.body)).data;
+        return cryptoList;
+      } else {
+        throw Exception('Failed to load price list');
+      }
+    } catch (e) {
+      throw Exception("An error occurred: $e");
+    }
+  }
+}

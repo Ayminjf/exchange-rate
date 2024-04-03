@@ -114,22 +114,22 @@ class Datum {
   String toRawJson() => json.encode(toJson());
 
   factory Datum.fromJson(Map<String, dynamic> json) => Datum(
-        id: json["id"],
-        symbol: json["symbol"],
-        name: json["name"],
-        nameid: json["nameid"],
-        rank: json["rank"],
-        priceUsd: json["price_usd"],
-        percentChange24H: json["percent_change_24h"],
-        percentChange1H: json["percent_change_1h"],
-        percentChange7D: json["percent_change_7d"],
-        priceBtc: json["price_btc"],
-        marketCapUsd: json["market_cap_usd"],
-        volume24: json["volume24"]?.toDouble(),
-        volume24A: json["volume24a"]?.toDouble(),
-        csupply: json["csupply"],
-        tsupply: json["tsupply"],
-        msupply: json["msupply"],
+        id: json["id"] ?? "",
+        symbol: json["symbol"] ?? "",
+        name: json["name"] ?? "",
+        nameid: json["nameid"] ?? "",
+        rank: json["rank"] ?? 0,
+        priceUsd: json["price_usd"] ?? "",
+        percentChange24H: json["percent_change_24h"] ?? "",
+        percentChange1H: json["percent_change_1h"] ?? "",
+        percentChange7D: json["percent_change_7d"] ?? "",
+        priceBtc: json["price_btc"] ?? "",
+        marketCapUsd: json["market_cap_usd"] ?? "",
+        volume24: json["volume24"]?.toDouble() ?? 0.0,
+        volume24A: json["volume24a"]?.toDouble() ?? 0.0,
+        csupply: json["csupply"] ?? "",
+        tsupply: json["tsupply"] ?? "",
+        msupply: json["msupply"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

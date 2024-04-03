@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class CryptoCurrencyModel {
   List<Datum> data;
   Info info;
@@ -15,6 +17,22 @@ class CryptoCurrencyModel {
         data: data ?? this.data,
         info: info ?? this.info,
       );
+
+  factory CryptoCurrencyModel.fromRawJson(String str) =>
+      CryptoCurrencyModel.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory CryptoCurrencyModel.fromJson(Map<String, dynamic> json) =>
+      CryptoCurrencyModel(
+        data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
+        info: Info.fromJson(json["info"]),
+      );
+
+  Map<String, dynamic> toJson() => {
+        "data": List<dynamic>.from(data.map((x) => x.toJson())),
+        "info": info.toJson(),
+      };
 }
 
 class Datum {
@@ -90,6 +108,48 @@ class Datum {
         tsupply: tsupply ?? this.tsupply,
         msupply: msupply ?? this.msupply,
       );
+
+  factory Datum.fromRawJson(String str) => Datum.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory Datum.fromJson(Map<String, dynamic> json) => Datum(
+        id: json["id"] ?? "",
+        symbol: json["symbol"] ?? "",
+        name: json["name"] ?? "",
+        nameid: json["nameid"] ?? "",
+        rank: json["rank"] ?? 0,
+        priceUsd: json["price_usd"] ?? "",
+        percentChange24H: json["percent_change_24h"] ?? "",
+        percentChange1H: json["percent_change_1h"] ?? "",
+        percentChange7D: json["percent_change_7d"] ?? "",
+        priceBtc: json["price_btc"] ?? "",
+        marketCapUsd: json["market_cap_usd"] ?? "",
+        volume24: json["volume24"]?.toDouble() ?? 0.0,
+        volume24A: json["volume24a"]?.toDouble() ?? 0.0,
+        csupply: json["csupply"] ?? "",
+        tsupply: json["tsupply"] ?? "",
+        msupply: json["msupply"] ?? "",
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "symbol": symbol,
+        "name": name,
+        "nameid": nameid,
+        "rank": rank,
+        "price_usd": priceUsd,
+        "percent_change_24h": percentChange24H,
+        "percent_change_1h": percentChange1H,
+        "percent_change_7d": percentChange7D,
+        "price_btc": priceBtc,
+        "market_cap_usd": marketCapUsd,
+        "volume24": volume24,
+        "volume24a": volume24A,
+        "csupply": csupply,
+        "tsupply": tsupply,
+        "msupply": msupply,
+      };
 }
 
 class Info {
@@ -109,4 +169,18 @@ class Info {
         coinsNum: coinsNum ?? this.coinsNum,
         time: time ?? this.time,
       );
+
+  factory Info.fromRawJson(String str) => Info.fromJson(json.decode(str));
+
+  String toRawJson() => json.encode(toJson());
+
+  factory Info.fromJson(Map<String, dynamic> json) => Info(
+        coinsNum: json["coins_num"],
+        time: json["time"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "coins_num": coinsNum,
+        "time": time,
+      };
 }

@@ -1,10 +1,8 @@
-import 'package:exchange_rate/widgets/coin_items.dart';
 import 'package:exchange_rate/widgets/crypto_items.dart';
 import 'package:exchange_rate/widgets/currency_items.dart';
 import 'package:flutter/material.dart';
 import 'package:exchange_rate/constants/constants.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -82,6 +80,30 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ],
                 ),
+                const SizedBox(height: 15),
+                Container(
+                  height: size.height * 0.20,
+                  decoration: BoxDecoration(
+                    color: Constants.greyColor,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: SizedBox(
+                      height: size.height * 0.75,
+                      child: const CryptoItems(count: 2),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 Widget _buildCoinItemHomeScreen(BuildContext context, int index) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,

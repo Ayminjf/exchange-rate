@@ -3,9 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 class CryptoItems extends StatelessWidget {
+  final int? count;
+
   const CryptoItems({
-    super.key,
-  });
+    Key? key,
+    this.count,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +17,7 @@ class CryptoItems extends StatelessWidget {
       itemBuilder: (context, index) {
         return _buildCurrencyItem(context, index);
       },
-      itemCount: Constants.cryptoSymbol.length,
+      itemCount: count ?? Constants.cryptoSymbol.length,
     );
   }
 

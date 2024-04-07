@@ -63,6 +63,25 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ),
                     ),
+                    Container(
+                      height: size.height * 0.18,
+                      width: size.width * 0.34,
+                      decoration: BoxDecoration(
+                        color: Constants.greyColor,
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: SizedBox(
+                        height: size.height * 0.75,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _buildGoldItemHomeScreen(context, 0),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
 Widget _buildCoinItemHomeScreen(BuildContext context, int index) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,4 +132,52 @@ Widget _buildCoinItemHomeScreen(BuildContext context, int index) {
   );
 }
 
+Widget _buildGoldItemHomeScreen(BuildContext context, int index) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Container(
+            padding: const EdgeInsets.all(5),
+            decoration: const BoxDecoration(
+              color: Color(0xFFDDDDDD),
+              // borderRadius: BorderRadius.all(Radius.circular(15)),
+              shape: BoxShape.circle,
+            ),
+            child: SizedBox(
+              height: 55,
+              width: 55,
+              child: SvgPicture.asset(
+                "assets/images/gold_screen/gold.svg",
+              ),
+            ),
+          ),
+          const SizedBox(width: 10),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Text(
+                Constants.nameGold[index],
+                style: const TextStyle(
+                  fontFamily: "lalezar",
+                  fontSize: 18,
+                ),
+              ),
+              Text(
+                Constants.priceFormat("40000".persianNumber),
+                style: const TextStyle(
+                  fontFamily: "iranSans",
+                  fontSize: 18,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    ],
+  );
 }

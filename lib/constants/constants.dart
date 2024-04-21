@@ -1,9 +1,5 @@
+import 'package:exchange_rate/provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:exchange_rate/screens/home_screen.dart';
-import 'package:exchange_rate/screens/coin_screen.dart';
-import 'package:exchange_rate/screens/gold_screen.dart';
-import 'package:exchange_rate/screens/crypto_screen.dart';
-import 'package:exchange_rate/screens/currency_screen.dart';
 
 class Constants {
   static Color blackColor = const Color(0xFF282828);
@@ -11,14 +7,6 @@ class Constants {
   static Color greyColor = const Color(0xFFE6E6E6);
   static Color highChangeColor = const Color(0xFFA1FD64);
   static Color lowChangeColor = const Color(0xFFFD8F64);
-
-  static List<Widget> screens = const [
-    CurrencyScreen(),
-    CoinScreen(),
-    HomeScreen(),
-    GoldScreen(),
-    CryptoScreen(),
-  ];
 
   static List<String> appBarTitle = const [
     "نرخ ارز کشور ها",
@@ -160,6 +148,16 @@ class Constants {
     }
 
     return result.split('').reversed.join('');
+  }
+
+  static String removeCommas(String input) {
+    return input.replaceAll(',', '');
+  }
+
+  static String priceListFormat(price) {
+    String p = removeCommas(price);
+    p = priceFormat(p);
+    return p.persianNumber;
   }
 }
 

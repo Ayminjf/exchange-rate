@@ -132,6 +132,20 @@ class Constants {
     "okb",
   ];
 
+  static List<String> sekke = [
+    "sekee",
+    "sekeb",
+    "nim",
+    "rob",
+    "gerami",
+  ];
+
+  static List<String> tala = [
+    "geram18",
+    "geram24",
+    "mesghal",
+  ];
+
   static String rialaToToman(String price) =>
       price.substring(0, price.length - 1);
 

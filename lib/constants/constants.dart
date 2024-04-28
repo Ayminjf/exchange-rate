@@ -189,3 +189,49 @@ class CustomTabBar extends StatelessWidget {
     );
   }
 }
+
+class PriceContainer extends StatelessWidget {
+  final DataPriceListAndCrypto dplc;
+  final int index;
+  final String price;
+
+  const PriceContainer({
+    super.key,
+    required this.dplc,
+    required this.index,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Constants.greyColor,
+        border: Border.all(
+          color: Constants.blackColor,
+          width: 2,
+          strokeAlign: BorderSide.strokeAlignCenter,
+        ),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
+      child: Center(
+        child: Row(
+          children: [
+            Text(
+              price,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              "تومان",
+              style: TextStyle(fontFamily: "lalezar", fontSize: 18),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

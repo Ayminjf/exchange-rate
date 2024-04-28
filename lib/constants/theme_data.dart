@@ -24,7 +24,7 @@ ThemeData themeData = ThemeData(
     bodySmall: TextStyle(
       color: Constants.blackColor,
       fontFamily: "iranSans",
-      fontSize: 22,
+      fontSize: 18,
     ),
     bodyLarge: TextStyle(
       color: Constants.blackColor,

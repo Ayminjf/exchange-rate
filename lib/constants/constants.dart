@@ -214,3 +214,28 @@ class PriceContainer extends StatelessWidget {
     );
   }
 }
+
+class CryptoPriceContainer extends StatelessWidget {
+  final DataPriceListAndCrypto dplc;
+  final int index;
+  final String price;
+
+  const CryptoPriceContainer({
+    super.key,
+    required this.dplc,
+    required this.index,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          "$price \$",
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+      ],
+    );
+  }
+}

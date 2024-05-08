@@ -1,9 +1,5 @@
+import 'package:exchange_rate/provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:exchange_rate/screens/home_screen.dart';
-import 'package:exchange_rate/screens/coin_screen.dart';
-import 'package:exchange_rate/screens/gold_screen.dart';
-import 'package:exchange_rate/screens/crypto_screen.dart';
-import 'package:exchange_rate/screens/currency_screen.dart';
 
 class Constants {
   static Color blackColor = const Color(0xFF282828);
@@ -11,14 +7,6 @@ class Constants {
   static Color greyColor = const Color(0xFFE6E6E6);
   static Color highChangeColor = const Color(0xFFA1FD64);
   static Color lowChangeColor = const Color(0xFFFD8F64);
-
-  static List<Widget> screens = const [
-    CurrencyScreen(),
-    CoinScreen(),
-    HomeScreen(),
-    GoldScreen(),
-    CryptoScreen(),
-  ];
 
   static List<String> appBarTitle = const [
     "نرخ ارز کشور ها",
@@ -109,39 +97,18 @@ class Constants {
     "مثقال طلا",
   ];
 
-  static List<String> cryptoSymbol = [
-    "btc",
-    "eth",
-    "usdt",
-    "bnb",
-    "sol",
-    "xrp",
-    "usdc",
-    "ada",
-    "avax",
-    "doge",
-    "shib",
-    "ton",
-    "dot",
-    "trx",
-    "wbtc",
-    "link",
-    "bch",
-    "near",
-    "uni",
-    "ltc",
-    "leo",
-    "apt",
-    "atom",
-    "tao",
-    "rndr",
-    "etc",
-    "stx",
-    "fil",
-    "imx",
-    "grt",
-    "xlm",
-    "okb",
+  static List<String> sekke = [
+    "sekee",
+    "sekeb",
+    "nim",
+    "rob",
+    "gerami",
+  ];
+
+  static List<String> tala = [
+    "geram18",
+    "geram24",
+    "mesghal",
   ];
 
   static String rialaToToman(String price) =>
@@ -160,6 +127,16 @@ class Constants {
     }
 
     return result.split('').reversed.join('');
+  }
+
+  static String removeCommas(String input) {
+    return input.replaceAll(',', '');
+  }
+
+  static String priceListFormat(price) {
+    String p = removeCommas(price);
+    p = priceFormat(p);
+    return p.persianNumber;
   }
 }
 
@@ -188,6 +165,77 @@ class CustomTabBar extends StatelessWidget {
       height: 30,
       width: 30,
       child: Image.asset("assets/images/$image.png"),
+    );
+  }
+}
+
+class PriceContainer extends StatelessWidget {
+  final DataPriceListAndCrypto dplc;
+  final int index;
+  final String price;
+
+  const PriceContainer({
+    super.key,
+    required this.dplc,
+    required this.index,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Constants.greyColor,
+        border: Border.all(
+          color: Constants.blackColor,
+          width: 2,
+          strokeAlign: BorderSide.strokeAlignCenter,
+        ),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
+      child: Center(
+        child: Row(
+          children: [
+            Text(
+              price,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              "تومان",
+              style: TextStyle(fontFamily: "lalezar", fontSize: 18),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CryptoPriceContainer extends StatelessWidget {
+  final DataPriceListAndCrypto dplc;
+  final int index;
+  final String price;
+
+  const CryptoPriceContainer({
+    super.key,
+    required this.dplc,
+    required this.index,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          "$price \$",
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+      ],
     );
   }
 }

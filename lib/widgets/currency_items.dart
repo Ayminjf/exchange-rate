@@ -1,6 +1,8 @@
 import 'package:exchange_rate/constants/constants.dart';
+import 'package:exchange_rate/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class CurrencyItems extends StatelessWidget {
   final int? count;
@@ -28,7 +30,7 @@ class CurrencyItems extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildCurrencyInfo(context, index),
-          _buildCurrencyDetails(context),
+          _buildCurrencyDetails(context, index),
         ],
       ),
     );
@@ -70,40 +72,18 @@ class CurrencyItems extends StatelessWidget {
     );
   }
 
-  Widget _buildCurrencyDetails(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          Constants.priceFormat("670000".persianNumber),
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
-        const SizedBox(
-          height: 3,
-        ),
-        Container(
-          width: 50,
-          height: 25,
-          decoration: BoxDecoration(
-            color: Constants.highChangeColor,
-            border: Border.all(
-              color: Constants.blackColor,
-              width: 2,
-              strokeAlign: BorderSide.strokeAlignCenter,
-            ),
-            borderRadius: const BorderRadius.all(
-              Radius.circular(8),
-            ),
-          ),
-          child: Center(
-            child: Text(
-              "2.4".persianNumber,
-              style: Theme.of(context).textTheme.bodyLarge,
-            ),
-          ),
-        ),
-      ],
+  Widget _buildCurrencyDetails(BuildContext context, int index) {
+    final dplc = Provider.of<DataPriceListAndCrypto>(context);
+    return Padding(
+      padding: const EdgeInsets.only(left: 5),
+      child: PriceContainer(
+        dplc: dplc,
+        index: index,
+        price: Constants.flagCurrency[index] == "usd"
+            ? Constants.priceListFormat(dplc.priceList["price_dollar_rl"]!.p)
+            : Constants.priceListFormat(
+                dplc.priceList["price_${Constants.flagCurrency[index]}"]!.p),
+      ),
     );
   }
 }

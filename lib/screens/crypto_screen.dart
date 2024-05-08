@@ -1,14 +1,9 @@
 import 'package:exchange_rate/widgets/crypto_items.dart';
 import 'package:flutter/material.dart';
 
-class CryptoScreen extends StatefulWidget {
+class CryptoScreen extends StatelessWidget {
   const CryptoScreen({super.key});
 
-  @override
-  State<CryptoScreen> createState() => _CryptoScreenState();
-}
-
-class _CryptoScreenState extends State<CryptoScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

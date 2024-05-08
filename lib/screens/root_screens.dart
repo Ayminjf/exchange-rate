@@ -1,9 +1,17 @@
 import 'package:exchange_rate/constants/constants.dart';
+import 'package:exchange_rate/screens/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:exchange_rate/screens/home_screen.dart';
+import 'package:exchange_rate/screens/coin_screen.dart';
+import 'package:exchange_rate/screens/gold_screen.dart';
+import 'package:exchange_rate/screens/crypto_screen.dart';
+import 'package:exchange_rate/screens/currency_screen.dart';
 
 class RootScreen extends StatefulWidget {
-  const RootScreen({super.key});
+  const RootScreen({
+    super.key,
+  });
 
   @override
   State<RootScreen> createState() => _RootScreenState();
@@ -36,13 +44,41 @@ class _RootScreenState extends State<RootScreen> {
                 ),
               ],
             ),
+            InkWell(
+              onTap: () => Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SplashScreen(),
+                  ),
+                  (route) => false),
+              child: Row(
+                children: [
+                  SizedBox(
+                    height: 40,
+                    width: 40,
+                    child: Image.asset("assets/images/exchange-rate.png"),
+                  ),
+                  const SizedBox(width: 10),
+                  Text(
+                    "بروزرسانی",
+                    style: Theme.of(context).textTheme.titleSmall,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
       body: PersistentTabView(
         context,
         controller: _controller,
-        screens: Constants.screens,
+        screens: const [
+          CurrencyScreen(),
+          CoinScreen(),
+          HomeScreen(),
+          GoldScreen(),
+          CryptoScreen(),
+        ],
         items: _navBarsItems(),
         onItemSelected: (value) {
           setState(() {

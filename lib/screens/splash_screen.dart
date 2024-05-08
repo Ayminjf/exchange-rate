@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:exchange_rate/constants/constants.dart';
 import 'package:exchange_rate/screens/root_screens.dart';
 import 'package:flutter/material.dart';

@@ -97,39 +97,18 @@ class Constants {
     "مثقال طلا",
   ];
 
-  static List<String> cryptoSymbol = [
-    "btc",
-    "eth",
-    "usdt",
-    "bnb",
-    "sol",
-    "xrp",
-    "usdc",
-    "ada",
-    "avax",
-    "doge",
-    "shib",
-    "ton",
-    "dot",
-    "trx",
-    "wbtc",
-    "link",
-    "bch",
-    "near",
-    "uni",
-    "ltc",
-    "leo",
-    "apt",
-    "atom",
-    "tao",
-    "rndr",
-    "etc",
-    "stx",
-    "fil",
-    "imx",
-    "grt",
-    "xlm",
-    "okb",
+  static List<String> sekke = [
+    "sekee",
+    "sekeb",
+    "nim",
+    "rob",
+    "gerami",
+  ];
+
+  static List<String> tala = [
+    "geram18",
+    "geram24",
+    "mesghal",
   ];
 
   static String rialaToToman(String price) =>
@@ -186,6 +165,77 @@ class CustomTabBar extends StatelessWidget {
       height: 30,
       width: 30,
       child: Image.asset("assets/images/$image.png"),
+    );
+  }
+}
+
+class PriceContainer extends StatelessWidget {
+  final DataPriceListAndCrypto dplc;
+  final int index;
+  final String price;
+
+  const PriceContainer({
+    super.key,
+    required this.dplc,
+    required this.index,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: const EdgeInsets.all(5),
+      decoration: BoxDecoration(
+        color: Constants.greyColor,
+        border: Border.all(
+          color: Constants.blackColor,
+          width: 2,
+          strokeAlign: BorderSide.strokeAlignCenter,
+        ),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(8),
+        ),
+      ),
+      child: Center(
+        child: Row(
+          children: [
+            Text(
+              price,
+              style: Theme.of(context).textTheme.bodySmall,
+            ),
+            const SizedBox(width: 10),
+            const Text(
+              "تومان",
+              style: TextStyle(fontFamily: "lalezar", fontSize: 18),
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class CryptoPriceContainer extends StatelessWidget {
+  final DataPriceListAndCrypto dplc;
+  final int index;
+  final String price;
+
+  const CryptoPriceContainer({
+    super.key,
+    required this.dplc,
+    required this.index,
+    required this.price,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text(
+          "$price \$",
+          style: Theme.of(context).textTheme.bodySmall,
+        ),
+      ],
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:exchange_rate/constants/constants.dart';
+import 'package:exchange_rate/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
 class GoldItems extends StatelessWidget {
   const GoldItems({
@@ -26,7 +28,7 @@ class GoldItems extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           _buildCurrencyInfo(context, index),
-          _buildCurrencyDetails(context),
+          _buildCurrencyDetails(context, index),
         ],
       ),
     );
@@ -65,19 +67,13 @@ class GoldItems extends StatelessWidget {
     );
   }
 
-  Widget _buildCurrencyDetails(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          Constants.priceFormat("40000".persianNumber),
-          style: Theme.of(context).textTheme.bodySmall,
-        ),
-        const SizedBox(
-          height: 3,
-        ),
-      ],
+  Widget _buildCurrencyDetails(BuildContext context, int index) {
+    final dplc = Provider.of<DataPriceListAndCrypto>(context);
+    return PriceContainer(
+      dplc: dplc,
+      index: index,
+      price:
+          Constants.priceListFormat(dplc.priceList[Constants.tala[index]]!.p),
     );
   }
 }

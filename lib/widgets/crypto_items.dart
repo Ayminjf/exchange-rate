@@ -1,7 +1,6 @@
 import 'package:exchange_rate/constants/constants.dart';
 import 'package:exchange_rate/provider/provider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 
 class CryptoItems extends StatelessWidget {

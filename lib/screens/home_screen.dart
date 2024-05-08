@@ -1,20 +1,18 @@
+import 'package:exchange_rate/provider/provider.dart';
 import 'package:exchange_rate/widgets/crypto_items.dart';
 import 'package:exchange_rate/widgets/currency_items.dart';
 import 'package:flutter/material.dart';
 import 'package:exchange_rate/constants/constants.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:provider/provider.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
+    final dplc = Provider.of<DataPriceListAndCrypto>(context);
     return Localizations.override(
       context: context,
       locale: const Locale('fa'),
@@ -34,7 +32,9 @@ class _HomeScreenState extends State<HomeScreen> {
                     padding: const EdgeInsets.all(15.0),
                     child: SizedBox(
                       height: size.height * 0.75,
-                      child: const CurrencyItems(count: 3),
+                      child: const CurrencyItems(
+                        count: 3,
+                      ),
                     ),
                   ),
                 ),
@@ -54,9 +54,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            _buildCoinItemHomeScreen(context, 0),
+                            _buildCoinItemHomeScreen(context, 0, dplc),
                             const SizedBox(width: 15),
-                            _buildCoinItemHomeScreen(context, 1)
+                            _buildCoinItemHomeScreen(context, 1, dplc)
                           ],
                         ),
                       ),
@@ -73,7 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            _buildGoldItemHomeScreen(context, 0),
+                            _buildGoldItemHomeScreen(context, 0, dplc),
                           ],
                         ),
                       ),
@@ -82,7 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const SizedBox(height: 15),
                 Container(
-                  height: size.height * 0.20,
+                  height: size.height * 0.23,
                   decoration: BoxDecoration(
                     color: Constants.greyColor,
                     borderRadius: BorderRadius.circular(12),
@@ -104,7 +104,11 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-Widget _buildCoinItemHomeScreen(BuildContext context, int index) {
+Widget _buildCoinItemHomeScreen(
+  BuildContext context,
+  int index,
+  DataPriceListAndCrypto dplc,
+) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -127,7 +131,7 @@ Widget _buildCoinItemHomeScreen(BuildContext context, int index) {
               ),
             ),
           ),
-          const SizedBox(width: 10),
+          const SizedBox(height: 10),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -139,13 +143,8 @@ Widget _buildCoinItemHomeScreen(BuildContext context, int index) {
                   fontSize: 18,
                 ),
               ),
-              Text(
-                Constants.priceFormat("40000".persianNumber),
-                style: const TextStyle(
-                  fontFamily: "iranSans",
-                  fontSize: 18,
-                ),
-              ),
+              Text(Constants.priceListFormat(
+                  dplc.priceList[Constants.sekke[index]]!.p)),
             ],
           ),
         ],
@@ -154,7 +153,11 @@ Widget _buildCoinItemHomeScreen(BuildContext context, int index) {
   );
 }
 
-Widget _buildGoldItemHomeScreen(BuildContext context, int index) {
+Widget _buildGoldItemHomeScreen(
+  BuildContext context,
+  int index,
+  DataPriceListAndCrypto dplc,
+) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     crossAxisAlignment: CrossAxisAlignment.center,
@@ -177,7 +180,7 @@ Widget _buildGoldItemHomeScreen(BuildContext context, int index) {
               ),
             ),
           ),
-          const SizedBox(width: 10),
+          const SizedBox(height: 10),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -190,7 +193,8 @@ Widget _buildGoldItemHomeScreen(BuildContext context, int index) {
                 ),
               ),
               Text(
-                Constants.priceFormat("40000".persianNumber),
+                Constants.priceListFormat(
+                    dplc.priceList[Constants.tala[index]]!.p),
                 style: const TextStyle(
                   fontFamily: "iranSans",
                   fontSize: 18,

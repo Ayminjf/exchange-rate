@@ -1,9 +1,18 @@
 import 'package:exchange_rate/constants/constants.dart';
+import 'package:exchange_rate/provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:persistent_bottom_nav_bar_v2/persistent-tab-view.dart';
+import 'package:provider/provider.dart';
+import 'package:exchange_rate/screens/home_screen.dart';
+import 'package:exchange_rate/screens/coin_screen.dart';
+import 'package:exchange_rate/screens/gold_screen.dart';
+import 'package:exchange_rate/screens/crypto_screen.dart';
+import 'package:exchange_rate/screens/currency_screen.dart';
 
 class RootScreen extends StatefulWidget {
-  const RootScreen({super.key});
+  const RootScreen({
+    super.key,
+  });
 
   @override
   State<RootScreen> createState() => _RootScreenState();
@@ -42,7 +51,13 @@ class _RootScreenState extends State<RootScreen> {
       body: PersistentTabView(
         context,
         controller: _controller,
-        screens: Constants.screens,
+        screens: const [
+          CurrencyScreen(),
+          CoinScreen(),
+          HomeScreen(),
+          GoldScreen(),
+          CryptoScreen(),
+        ],
         items: _navBarsItems(),
         onItemSelected: (value) {
           setState(() {

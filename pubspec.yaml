@@ -18,6 +18,7 @@ dependencies:
   provider: ^6.1.2
   rive: ^0.13.1
   rive_splash_screen: ^0.1.1
+  connectivity_plus: ^6.0.3
 
 dev_dependencies:
   flutter_test:
@@ -32,7 +33,6 @@ flutter:
     - assets/images/currency_screen/
     - assets/images/coin_screen/
     - assets/images/gold_screen/
-    - assets/images/crypto_screen/
 
   fonts:
     - family: iranSans

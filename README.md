@@ -1,4 +1,4 @@
-# Plant-Shop
+# Exchange Rate
 
 <p id="description">Exchange Rate is a Flutter application that displays the prices of currencies of different countries in Iranian Tomans, digital currencies, gold, and Iranian coins.
 </p>
